@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi amor por ti</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: #fff0f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #a0522d;
+    }
+    input {
+      padding: 10px;
+      border: 2px solid #d8bfd8;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #ffb6c1;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Para comenzar esta historia...</h1>
+  <p>Escribe esa frase que siempre digo cuando quiero hacer algo contigo 🥹</p>
+  <input type="text" id="respuesta" placeholder="Escríbela aquí...">
+  <button onclick="verificar()">Desbloquear</button>
+  <p class="error" id="mensaje"></p>
+
+  <script>
+    function verificar() {
+      const input = document.getElementById('respuesta').value.trim().toLowerCase();
+      const mensaje = document.getElementById('mensaje');
+      if (input === "fuimonos bartolo") {
+        window.location.href = "carta.html";
+      } else {
+        mensaje.textContent = "Ups… ¡piensa bien! Es algo que siempre digo 😉";
+      }
+    }
+  </script>
+
+</body>
+</html>
