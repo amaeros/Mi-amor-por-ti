@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galería del Amor</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fffaf0;
+      color: #333;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #a0522d;
+    }
+    img {
+      max-width: 90%;
+      max-height: 400px;
+      border-radius: 12px;
+      margin-top: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .frase {
+      margin-top: 20px;
+      font-style: italic;
+      font-size: 18px;
+    }
+    button {
+      margin: 30px 10px 10px 10px;
+      padding: 10px 20px;
+      background-color: #ffb6c1;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>18 meses contigo 💞</h1>
+  <img id="foto" src="fotos/mes1.jpg" alt="Foto del mes">
+  <div class="frase" id="frase">No pensé que me fueras a gustar… y menos enamorarme. No estaba lista para el amor, pero me invitaste a Colombiatex.</div>
+
+  <div>
+    <button onclick="anterior()">⬅️ Anterior</button>
+    <button onclick="siguiente()">Siguiente ➡️</button>
+  </div>
+
+  <br><br>
+  <a href="codigo.html" style="text-decoration: none; background: #ff69b4; color: white; padding: 10px 18px; border-radius: 8px;">Ir al código fuente del amor 💻</a>
+
+  <script>
+    const imagenes = [
+      "mes1.jpg", "mes2.jpg", "mes3.jpg", "mes4.jpg", "mes5.jpg", "mes6.jpg",
+      "mes7.jpg", "mes8.jpg", "mes9.jpg", "mes10.jpg", "mes11.jpg", "mes12.jpg",
+      "mes13.jpg", "mes14.jpg", "mes15.jpg", "mes16.jpg", "mes17.jpg", "mes18.jpg"
+    ];
+
+    const frases = [
+      "No pensé que me fueras a gustar… y menos enamorarme. No estaba lista para el amor, pero me invitaste a Colombiatex.",
+      "Una borrachera, una manguita y mis peores fachas… y aún así, grandes decisiones.",
+      "Seguía dudando, pero algo empezó a crecer.",
+      "¿Oficialmente lo intentamos? Creo que sí.",
+      "La vida empezó a sentirse más divertida contigo.",
+      "She said: '¡ay jueputa!'... 10 minutos después: sí.",
+      "Mi mes, compartido por primera vez con alguien en 4 años. Gracias por las rosas, siempre me acordaré.",
+      "Momentos de tensión… pero ahí estuviste, firme.",
+      "Tu mes. Qué felicidad celebrar tu vida.",
+      "La princesa y el sapo. Así nos veo.",
+      "Finales, despedidas, la gracia… pero también algo me había dejado la U: tú.",
+      "Mucha rumba, desorden, moda, viajes, fútbol, playa… como a mí me gusta.",
+      "New life, same guy.",
+      "Nuestro primer San Valentín.",
+      "Nada en especial… solo amor por ahí.",
+      "Nuestro primer viaje internacional.",
+      "Altibajos… pero seguimos aquí.",
+      "¡Lo logramos!"
+    ];
+
+    let actual = 0;
+
+    function mostrar() {
+      document.getElementById("foto").src = `fotos/${imagenes[actual]}`;
+      document.getElementById("frase").textContent = frases[actual];
+    }
+
+    function siguiente() {
+      if (actual < imagenes.length - 1) {
+        actual++;
+        mostrar();
+      }
+    }
+
+    function anterior() {
+      if (actual > 0) {
+        actual--;
+        mostrar();
+      }
+    }
+  </script>
+
+</body>
+</html>
