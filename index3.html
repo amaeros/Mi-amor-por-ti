@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trivia del Amor</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: 'Georgia', serif;
+      padding: 40px;
+      text-align: center;
+    }
+    h1 {
+      color: #c71585;
+    }
+    .pregunta {
+      margin-bottom: 30px;
+    }
+    select {
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    #mensaje {
+      margin-top: 20px;
+      font-weight: bold;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Trivia del Amor 💘</h1>
+
+  <div class="pregunta">
+    <p><strong>1. ¿First (us) restaurant?</strong></p>
+    <select id="p1">
+      <option value="">--Selecciona--</option>
+      <option value="Romero">Romero</option>
+      <option value="Wan">Wan</option>
+      <option value="El Corral">El Corral</option>
+    </select>
+  </div>
+
+  <div class="pregunta">
+    <p><strong>2. ¿Next trip?</strong></p>
+    <select id="p2">
+      <option value="">--Selecciona--</option>
+      <option value="Egypt">Egypt</option>
+      <option value="Canadá">Canadá</option>
+      <option value="La playa">La playa</option>
+    </select>
+  </div>
+
+  <div class="pregunta">
+    <p><strong>3. ¿Qué crees que elegiría si estoy de mal humor?</strong></p>
+    <select id="p3">
+      <option value="">--Selecciona--</option>
+      <option value="Dormir">Dormir</option>
+      <option value="Comer">Comer</option>
+      <option value="Bailar">Bailar</option>
+    </select>
+  </div>
+
+  <button onclick="verificar()">Responder</button>
+
+  <div id="mensaje"></div>
+
+  <script>
+    function verificar() {
+      const r1 = document.getElementById("p1").value;
+      const r2 = document.getElementById("p2").value;
+      const r3 = document.getElementById("p3").value;
+      const mensaje = document.getElementById("mensaje");
+
+      if (r1 === "Romero" && r2 === "Egypt" && r3 === "Comer") {
+        window.location.href = "galeria.html";
+      } else {
+        mensaje.textContent = "¡Inténtalo otra vez! Hay al menos una respuesta incorrecta 😬";
+      }
+    }
+  </script>
+
+</body>
+</html>
