@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Código Fuente del Amor</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #00ffcc;
+      font-family: 'Courier New', monospace;
+      padding: 40px;
+      font-size: 16px;
+    }
+    .terminal {
+      max-width: 800px;
+      margin: auto;
+      background-color: #111;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffcc88;
+      min-height: 300px;
+      white-space: pre-line;
+    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background: #00ffcc;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    a {
+      display: block;
+      margin-top: 30px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #00ffcc;
+      color: black;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal" id="terminal">
+  </div>
+
+  <a href="cierre.html">Finalizar historia 💖</a>
+
+  <script>
+    const texto = `
+let andrea = "Mi conciencia, mi calma, mi amor";
+let relación = {
+  decisiones: ["Colombiatex", "rosas", "viajes", "perseverancia"],
+  amor: "constante",
+  elegidaCadaDía: true
+};
+
+if (relación.elegidaCadaDía) {
+  console.log("Lo nuestro no son mariposas... son elecciones. Y te sigo eligiendo.");
+}
+    `;
+
+    const terminal = document.getElementById("terminal");
+    let i = 0;
+
+    function escribir() {
+      if (i < texto.length) {
+        terminal.textContent += texto[i];
+        i++;
+        setTimeout(escribir, 25);
+      } else {
+        const cursor = document.createElement("span");
+        cursor.className = "cursor";
+        terminal.appendChild(cursor);
+      }
+    }
+
+    escribir();
+  </script>
+
+</body>
+</html>
