@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Final</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: 'Georgia', serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 30px;
+      text-align: center;
+    }
+    h1 {
+      color: #c71585;
+      font-size: 2.2rem;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #4b2e2e;
+      margin-top: 20px;
+      max-width: 600px;
+    }
+    a {
+      margin-top: 40px;
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #ff69b4;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Gracias por vivir esta historia conmigo 💖</h1>
+  <p>No es un juego. Es mi forma de decirte que te elijo, que te pienso,  
+     y que lo que construimos… tiene todo el sentido del mundo.</p>
+
+  <a href="index.html">Volver al inicio 🔁</a>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById("confetti-canvas");
+    const ctx = canvas.getContext("2d");
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    const confettis = Array.from({ length: 100 }).map(() => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 6 + 4,
+      d: Math.random() * 50,
+      color: `hsl(${Math.random() * 360}, 70%, 60%)`,
+      tilt: Math.random() * 10 - 10,
+      tiltAngleIncremental: Math.random() * 0.07 + 0.05,
+      tiltAngle: 0
+    }));
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      confettis.forEach(confetti => {
+        ctx.beginPath();
+        ctx.lineWidth = confetti.r;
+        ctx.strokeStyle = confetti.color;
+        ctx.moveTo(confetti.x + confetti.tilt + confetti.r / 2, confetti.y);
+        ctx.lineTo(confetti.x + confetti.tilt, confetti.y + confetti.tilt + confetti.r / 2);
+        ctx.stroke();
+      });
+
+      update();
+    }
+
+    function update() {
+      confettis.forEach(confetti => {
+        confetti.tiltAngle += confetti.tiltAngleIncremental;
+        confetti.y += (Math.cos(confetti.d) + 3 + confetti.r / 2) / 2;
+        confetti.tilt = Math.sin(confetti.tiltAngle - confetti.d / 3) * 15;
+
+        if (confetti.y > height) {
+          confetti.y = -10;
+          confetti.x = Math.random() * width;
+        }
+      });
+    }
+
+    function loop() {
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    loop();
+
+    window.addEventListener("resize", () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    });
+  </script>
+
+</body>
+</html>
